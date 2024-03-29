@@ -1,0 +1,26 @@
+universe = vanilla
+
+executable = qtl_scan_16s.sh
+arguments = $(R_script)
+
+#REQUIREMENTS:
+
+Requirements = (OpSys == "LINUX") && (OpSysMajorVer == 8) && (Target.HasCHTCStaging == true)
+
+transfer_input_files = qtl_scan_16s.R, \
+                       PROG_instl/R-3.6.3.tar.gz, \
+                       PROG_instl/R-3.6.3-packages.tar.gz
+
+should_transfer_files = YES
+when_to_transfer_output = ON_EXIT
+
+log = qtl_scan_16s.log
+error = qtl_scan_16s.error
+output= qtl_scan_16s.out
+
+R_script = qtl_scan_16s.R
+
+request_memory = 200GB
+request_disk = 100GB
+request_cpus = 8
+queue
