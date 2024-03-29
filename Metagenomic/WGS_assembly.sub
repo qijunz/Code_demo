@@ -1,0 +1,29 @@
+universe = vanilla
+
+executable = WGS_assembly.sh
+arguments = $(sample)
+
+#REQUIREMENTS:
+
+Requirements = (OpSys == "LINUX") && (OpSysMajorVer == 8) && (Target.HasCHTCStaging == true)
+
+transfer_input_files = PROG_instl/SPAdes-3.15.5.tar.gz, \
+                       PROG_instl/Prodigal-2.6.3.tar.gz, \
+                       PROG_instl/python-3.8.tar.gz, \
+                       PROG_instl/python-3.8-packages.tar.gz, \
+                       PROG_instl/assembly_pipeline.py
+
+should_transfer_files = YES
+when_to_transfer_output = ON_EXIT
+
+log = HMDP_WGS/assembly/HMDP001.log
+error = HMDP_WGS/assembly/HMDP001.error
+output = HMDP_WGS/assembly/HMDP001.out
+
+sample = HMDP001
+
+request_memory = 100GB
+request_disk = 100GB
+request_cpus = 8
+
+queue
